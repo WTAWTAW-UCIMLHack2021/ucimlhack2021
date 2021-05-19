@@ -27,7 +27,7 @@ class TrainTestSplitter:
     
     def transform_split(self, test_size=0.25):
         """
-        Splits dataset into random train and test subsets such that each row represents a unique key. 
+        Splits dataset into random train and test subsets such that each row represents a unique tweet. 
         The dataset is split so that the proportion of misconception-spreading tweets is the same across 
         training and testing sets.
         
@@ -56,7 +56,7 @@ class TrainTestSplitter:
         
         return X_train, X_test, y_train, y_test
         
-# Only run when the file is run directly
+# Only executed when the file is run directly
 if __name__ == '__main__':
     dataset = pd.read_csv('./data/covid_lies.csv')
     
