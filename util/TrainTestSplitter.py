@@ -4,7 +4,7 @@ from collections import namedtuple
 
 from util import transform
 
-covidlies = pd.read_csv('./data/covid_lies.csv')
+covidlies = pd.read_csv('../data/covid_lies.csv')
 
 class TrainTestSplitter:
     def __init__(self):
