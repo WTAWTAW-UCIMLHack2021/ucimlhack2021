@@ -10,3 +10,5 @@ Our team's submission for the 2021 UCI Machine Learning Hackathon
 5. Start JupyterLab by running `jupyter lab`
 
 All done!
+
+To update the conda environment, run `conda env update --name uciml --file .\environment.yaml`
