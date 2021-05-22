@@ -104,11 +104,11 @@ class BagOfWords:
 
 
 if __name__ == '__main__':
-    X_train = ["I'm so hungry I eat a horse", "I drink water", "She drinks milk",
-               "Why can't I eat anything", "Are you thirsty", "Do you have anything to eat"]
-    X_test = ["I am hungry", "He is thirsty", "I eat food", "I drink juice"]
-    Y_train = [1, 0, 0, 1, 0, 1]
-    Y_test = [1, 0, 1, 0]
+    covidlies = pd.read_csv('../data/covid_lies_processed.csv')
+    X_train = list(covidlies['tweet'])[:5000]
+    X_test = list(covidlies['tweet'])[5000:]
+    Y_train = list(covidlies['label'])[:5000]
+    Y_test = list(covidlies['label'])[5000:]
     bag = BagOfWords(X_train, Y_train)
     print(bag.vectorize())
     bag.train()
