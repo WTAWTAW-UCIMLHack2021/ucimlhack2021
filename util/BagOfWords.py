@@ -133,14 +133,6 @@ class BagOfWords:
 if __name__ == '__main__':
     covidlies = pd.read_csv('../data/covid_lies_processed.csv')
     covidlies = transform(covidlies)
-
-    """
-    tweet_index_dict = {t['tweet_id']: (t['tweet'], t['misconception']) for _, t in covidlies.iterrows()}
-    _, train, test = stratify_split(list(covidlies['tweet_id']), list(covidlies['misconception']))
-
-    X_train, Y_train = zip(*[tweet_index_dict[covidlies['tweet_id'].iloc[tid]] for tid in train])
-    X_test, Y_test = zip(*[tweet_index_dict[covidlies['tweet_id'].iloc[tid]] for tid in test])
-    """
     X_train, Y_train, X_test, Y_test = data_split(covidlies, 'tweet_id', 'tweet', 'misconception')
     bag = BagOfWords(X_train, Y_train)
     print(bag.vectorize())
