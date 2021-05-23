@@ -2,6 +2,7 @@ name: uciml
 channels:
   - defaults
 dependencies:
+
   - python=3.8
   - jupyterlab
   - pandas
@@ -9,3 +10,6 @@ dependencies:
   - scikit-learn
   - wordcloud
   - nltk
+  - pip
+  - pip:
+      - datasketch
