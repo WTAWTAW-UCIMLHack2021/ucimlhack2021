@@ -13,7 +13,7 @@ def transform(data, unique_by_tweet_contents=True) -> pd.DataFrame:
          If we consider tweets unique by their ID: A, B, and C would be in the transformed dataframe.
          
     This approach is limited in that we cannot account for tweets that are similar but not identical (see A and C in example). However,
-    we estimate such an approach eliminates upwards of 97% of semantically identical tweets from by counting the number of total tweets
+    we estimate such an approach eliminates upwards of 97% of semantically identical tweets from counting the number of total tweets
     that are highly related (0.95 > Jaccard Set similarity -- see util/minhash.ipynb)
     
     Parameters:
