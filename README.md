@@ -7,6 +7,8 @@ Our team's (WTAWTAW - Where There's A Word, There's A Way) submission for the 20
 
 ### [Link to Presentation](https://docs.google.com/presentation/d/1VHZegEMUgxX3Ma98InqBI7O6h_mKQgJCBxJdw5hs0FM/edit#slide=id.g35f391192_00)
 
+### [Link to Video](https://youtu.be/lG-gmkeB4N4)
+
 ## Environment Setup
 
 1. Make sure you have [Anaconda](https://www.anaconda.com/products/individual) installed
