@@ -1,6 +1,33 @@
 import collections
 import pandas as pd
 from sklearn import tree
+from util import transform
+from cross_validation import stratify_split
+
+def data_split(data: pd.DataFrame, id: str, x: str, y: str) -> ([str], [bool], [str], [bool]):
+    """
+    This function takes any DataFrame along with 3 fields from that set {id, x, y}
+    and calls the imported stratify_split function in order to split the data into
+    4 lists (2 for training {X_train, Y_train} and 2 for cross-validation/testing {X_test, Y_test}).
+    :param data(pd.DataFrame): The dataset the user wants to split into training and testing data.
+    :param id(str): The field name of the given data set that uniquely identifies each row in the data set.
+    :param x(str): The field name of the column where its values are the desired input values (X_train/X_test).
+    :param y(str): The field names of the column where its values we want to train/test on (Y_train/Y_test).
+    :return X_train, Y_train, X_test, Y_test: The resulting data subsets to use for training/testing.
+    """
+    assert(id in [field for field in data]), "Given id field is not a field found in the given data set"
+    assert(x in [field for field in data]), "Given input field is not a field found in the given data set"
+    assert(y in [field for field in data]), "Given prediction field is not a field found in the given data set"
+    assert(len(data[id]) == len(data[x]) == len(data[y])), "Some x and y value pairs associated with a unique id"
+    assert(len(data[id]) == len({id for id in data[id]})), "Id field given does not uniquely \
+                                                            identify rows in the DataFrame"
+    index_dict = {t[id]: (t[x], t[y]) for _, t in data.iterrows()}
+    _, train, test = stratify_split(list(data[x]), list(data[y]))
+
+    X_train, Y_train = zip(*[index_dict[data[id].iloc[tid]] for tid in train])
+    X_test, Y_test = zip(*[index_dict[data[id].iloc[tid]] for tid in test])
+
+    return X_train, Y_train, X_test, Y_test
 
 class BagOfWords:
     def __init__(self, x: [str], y: [int], words=None, field_key=(lambda x:-x[1])):
@@ -105,10 +132,16 @@ class BagOfWords:
 
 if __name__ == '__main__':
     covidlies = pd.read_csv('../data/covid_lies_processed.csv')
-    X_train = list(covidlies['tweet'])[:5000]
-    X_test = list(covidlies['tweet'])[5000:]
-    Y_train = list(covidlies['label'])[:5000]
-    Y_test = list(covidlies['label'])[5000:]
+    covidlies = transform(covidlies)
+
+    """
+    tweet_index_dict = {t['tweet_id']: (t['tweet'], t['misconception']) for _, t in covidlies.iterrows()}
+    _, train, test = stratify_split(list(covidlies['tweet_id']), list(covidlies['misconception']))
+
+    X_train, Y_train = zip(*[tweet_index_dict[covidlies['tweet_id'].iloc[tid]] for tid in train])
+    X_test, Y_test = zip(*[tweet_index_dict[covidlies['tweet_id'].iloc[tid]] for tid in test])
+    """
+    X_train, Y_train, X_test, Y_test = data_split(covidlies, 'tweet_id', 'tweet', 'misconception')
     bag = BagOfWords(X_train, Y_train)
     print(bag.vectorize())
     bag.train()
