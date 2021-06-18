@@ -1,9 +1,8 @@
 # Pandemic of Lies: Truth and Deception in a Sea of Noise
+### Team WTAWTAW (Where There's A Word, There's A Way) - Best Presentation
 [![Made with Jupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?style=for-the-badge&logo=Jupyter)](https://jupyter.org/try)
 
-[![Pandemic of Lies](https://user-images.githubusercontent.com/23201789/119278190-85612b80-bbd8-11eb-97e7-e93d361ab77b.PNG)](https://docs.google.com/presentation/d/1VHZegEMUgxX3Ma98InqBI7O6h_mKQgJCBxJdw5hs0FM/edit?usp=sharing)
-
-Our team's (WTAWTAW - Where There's A Word, There's A Way) submission for the 2021 UCI Machine Learning Hackathon.
+[![Pandemic of Lies](https://user-images.githubusercontent.com/23201789/122486639-55663780-cf8e-11eb-9bbb-2b61907dc868.png)](https://docs.google.com/presentation/d/1VHZegEMUgxX3Ma98InqBI7O6h_mKQgJCBxJdw5hs0FM/edit?usp=sharing)
 
 ### [Link to Presentation](https://docs.google.com/presentation/d/1VHZegEMUgxX3Ma98InqBI7O6h_mKQgJCBxJdw5hs0FM/edit#slide=id.g35f391192_00)
 
